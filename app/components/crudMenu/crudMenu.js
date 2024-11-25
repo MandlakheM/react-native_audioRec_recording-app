@@ -29,36 +29,40 @@ export default function crudMenu({ selectedRec, onDelete, onRename }) {
     <View style={styles.container}>
       <Pressable onPress={handleRename}>
         <View style={styles.menuItems}>
-          <Text>Rename</Text>
-          <FontAwesome5 name="edit" size={20} color="black" />
+          <Text style={styles.menuItemsText}>Rename</Text>
+          <FontAwesome5 name="edit" size={20} color="gainsboro" />
         </View>
       </Pressable>
       <Pressable onPress={() => alert("share recording: " + selectedRec.uri)}>
         <View style={styles.menuItems}>
-          <Text>Share</Text>
-          <FontAwesome5 name="share-square" size={20} color="black" />
+          <Text style={styles.menuItemsText}>Share</Text>
+          <FontAwesome5 name="share-square" size={20} color="gainsboro" />
         </View>
       </Pressable>
       <Pressable onPress={handleDelete}>
         <View style={styles.menuItems}>
-          <Text>Delete</Text>
-          <FontAwesome5 name="trash-alt" size={20} color="black" />
+          <Text style={styles.menuItemsText}>Delete</Text>
+          <FontAwesome5 name="trash-alt" size={20} color="gainsboro" />
         </View>
       </Pressable>
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
-    position:"absolute",
-    backgroundColor:'white',
-    bottom: 10
+    position: "absolute",
+    backgroundColor: "#171717",
+    bottom: 10,
   },
   menuItems: {
     alignItems: "center",
+  },
+  menuItemsText: {
+    color: "gainsboro",
   },
 });

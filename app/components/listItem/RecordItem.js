@@ -37,15 +37,15 @@ export default function RecordItem({ rec, showMenu }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: '#021D0C',
     margin: 5,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 15,
     paddingVertical: 5,
     borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "orangered",
+    borderWidth: 1,
+    borderColor: "#95D4AA",
     gap: 15,
     shadowColor: "#000",
     shadowOffset: {
@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
   recordingName: {
     // backgroundColor:'blue',
     fontSize: 12,
+    color: 'white',
+    textAlign: 'center',
+    paddingRight: 30
     // marginBottom: 5,
   },
 });

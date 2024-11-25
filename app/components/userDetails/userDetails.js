@@ -31,7 +31,7 @@ const CustomUserButton = () => {
           </View>
         )}
         <Text style={styles.userName}>
-          {user?.firstName || user?.emailAddresses?.[0]?.emailAddress}
+          {/* {user?.firstName || user?.emailAddresses?.[0]?.emailAddress} */}
         </Text>
       </TouchableOpacity>
     </View>
@@ -40,22 +40,16 @@ const CustomUserButton = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    // padding: 10,
   },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
-    padding: 8,
+    // backgroundColor: 'white',
+    // padding: 8,
     borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    // shadowColor: "#000",
+
   },
   avatar: {
     width: 40,
