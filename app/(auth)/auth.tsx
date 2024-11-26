@@ -21,6 +21,7 @@ export default function LoginScreen() {
 
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUp, setisSignup] = useState(false);
 
   const [support, setSupport] = useState(false);
   const { user } = useUser();
@@ -78,7 +79,7 @@ export default function LoginScreen() {
         <TouchableOpacity style={styles.tab}>
           {/* <Text style={styles.tabText}>Signup</Text> */}
           <Link href="/sign-up">
-            <Text style={[styles.tabText, styles.activeTabText]}>Sign Up</Text>
+            <Text style={[styles.tabText, styles.signUp]}>Sign Up</Text>
           </Link>
         </TouchableOpacity>
       </View>
@@ -96,6 +97,7 @@ export default function LoginScreen() {
             autoCapitalize="none"
             value={emailAddress}
             placeholder="Email..."
+            placeholderTextColor= "white"
             onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
           />
           {/* <FontAwesome name="check-circle" size={20} color="green" /> */}
@@ -114,12 +116,16 @@ export default function LoginScreen() {
             // autoCapitalize="none"
             value={password}
             placeholder="Password..."
+            placeholderTextColor= "white"
+          
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
           />
           {/* <FontAwesome name="check-circle" size={20} color="green" /> */}
         </View>
       </View>
+
+      {/* {isSignUp && } */}
 
       {/* Continue Button */}
       <TouchableOpacity style={styles.continueButton} onPress={onSignInPress}>
@@ -142,9 +148,9 @@ export default function LoginScreen() {
 
       {/* Footer Text */}
       <Text style={styles.footerText}>
-        Join the millions of smart investors who trust us to manage their
-        finances. Log in to access your personalized dashboard, track your
-        portfolio performance, and make informed investment decisions.
+        Join the millions of smart users who trust us to manage their
+        voice journals. Log in to access your personalized voice journal, track your
+        recordings, and capture your most valuable moments.
       </Text>
 
       <SignedIn>
@@ -158,7 +164,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#171717",
     padding: 20,
     justifyContent: "center",
   },
@@ -174,13 +180,13 @@ const styles = StyleSheet.create({
   brandText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: 'white',
   },
   welcomeText: {
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#000",
+    color: 'white',
     marginBottom: 5,
   },
   subText: {
@@ -200,7 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   activeTab: {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#95D4AA",
   },
   tabText: {
     fontSize: 16,
@@ -215,7 +221,7 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 14,
-    color: "#555",
+    color: "white",
     marginBottom: 5,
   },
   inputWrapper: {
@@ -228,19 +234,19 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 40,
+    height: 90,
     fontSize: 16,
-    color: "#000",
+    color: "#white",
   },
   continueButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#95D4AA",
     borderRadius: 8,
     paddingVertical: 12,
     alignItems: "center",
     marginBottom: 20,
   },
   continueText: {
-    color: "#fff",
+    color: "#000",
     fontSize: 16,
     fontWeight: "bold",
   },
@@ -260,6 +266,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 50,
     backgroundColor: "#f0f0f0",
+  },
+  signUp:{
+    color:"#95D4AA"
   },
   footerText: {
     fontSize: 12,
