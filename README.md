@@ -1,16 +1,37 @@
-# Welcome to your Expo app 👋
+# Audio Rec
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application that allows users to record, store, and manage voice notes with advanced features like cloud sync, offline playback, and social sharing capabilities.
+
+## Screen Shot
+![Image](https://github.com/user-attachments/assets/2087ea10-cfbd-45ff-b248-dd74071423c6)
+
+## Features
+
+### Core Functionality
+
+Audio recording and playback
+
+Voice note management
+
+Secure user authentication (login/registration)
+
+Protected routes for authenticated users
 
 ## Get started
 
-1. Install dependencies
+1. Clone repo
+
+``` bash
+      https://github.com/MandlakheM/react-native_audioRec_recording-app.git
+```
+
+3. Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+4. Start the app
 
    ```bash
     npx expo start
