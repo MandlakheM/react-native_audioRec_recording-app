@@ -6,25 +6,21 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Pressable,
-  ViewComponent,
 } from "react-native";
 import { useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
-import { SignedIn, SignedOut, useUser, useSignIn } from "@clerk/clerk-expo";
+import { SignedIn, useUser, useSignIn } from "@clerk/clerk-expo";
 import RecordingButton from "../components/recordingButton/recordingButton";
+import { Alert } from "react-native";
 
 export default function LoginScreen() {
-  const { signIn, setActive, isLoaded } = useSignIn()
+  const { signIn, setActive, isLoaded } = useSignIn();
   const router = useRouter();
 
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setisSignup] = useState(false);
 
-  const [support, setSupport] = useState(false);
-  const { user } = useUser();
+
 
   const onSignInPress = useCallback(async () => {
     if (!isLoaded) {
@@ -46,35 +42,31 @@ export default function LoginScreen() {
         console.error(JSON.stringify(signInAttempt, null, 2));
       }
     } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
+      // console.error(JSON.stringify(err, null, 2));
+      Alert.alert("Error", err.message);
     }
   }, [isLoaded, emailAddress, password]);
 
   return (
     <View style={styles.container}>
-      {/* Logo Section */}
       <View style={styles.logoContainer}>
-        {/* Replace this with an Image component if you have a logo */}
         <Image
-          source={require("../../assets/images/icon.png")} // Replace with your logo file
+          source={require("../../assets/images/icon.png")}
           style={styles.logo}
         />
         <Text style={styles.brandText}>Audio Rec</Text>
       </View>
 
-      {/* Welcome Text */}
       <Text style={styles.welcomeText}>Welcome Back</Text>
       <Text style={styles.subText}>
         Welcome Back, Please enter Your details
       </Text>
 
-      {/* Tab Options */}
       <View style={styles.tabContainer}>
         <TouchableOpacity style={[styles.tab, styles.activeTab]}>
-          {/* <Text style={[styles.tabText, styles.activeTabText]}>Sign In</Text> */}
-          <Link href="/sign-in">
+          <View>
             <Text style={[styles.tabText, styles.activeTabText]}>Sign In</Text>
-          </Link>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tab}>
           {/* <Text style={styles.tabText}>Signup</Text> */}
@@ -84,7 +76,6 @@ export default function LoginScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Input Fields */}
       <View style={styles.inputContainer}>
         <Text style={styles.inputLabel}>Email Address</Text>
         <View style={styles.inputWrapper}>
@@ -94,10 +85,11 @@ export default function LoginScreen() {
             placeholderTextColor="#ccc"
           /> */}
           <TextInput
+            style={styles.input}
             autoCapitalize="none"
             value={emailAddress}
             placeholder="Email..."
-            placeholderTextColor= "white"
+            placeholderTextColor="white"
             onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
           />
           {/* <FontAwesome name="check-circle" size={20} color="green" /> */}
@@ -113,11 +105,10 @@ export default function LoginScreen() {
             placeholderTextColor="#ccc"
           /> */}
           <TextInput
-            // autoCapitalize="none"
+            style={styles.input}
             value={password}
             placeholder="Password..."
-            placeholderTextColor= "white"
-          
+            placeholderTextColor="white"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
           />
@@ -125,38 +116,20 @@ export default function LoginScreen() {
         </View>
       </View>
 
-      {/* {isSignUp && } */}
 
-      {/* Continue Button */}
       <TouchableOpacity style={styles.continueButton} onPress={onSignInPress}>
         <Text style={styles.continueText}>Continue</Text>
       </TouchableOpacity>
 
-      {/* Social Login Options */}
-      {/* <Text style={styles.orText}>Or Continue With</Text>
-      <View style={styles.socialContainer}>
-        <TouchableOpacity style={styles.socialButton}>
-          <FontAwesome name="google" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <FontAwesome name="apple" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <FontAwesome name="facebook" size={24} color="black" />
-        </TouchableOpacity>
-      </View> */}
-
-      {/* Footer Text */}
       <Text style={styles.footerText}>
-        Join the millions of smart users who trust us to manage their
-        voice journals. Log in to access your personalized voice journal, track your
+        Join the millions of smart users who trust us to manage their voice
+        journals. Log in to access your personalized voice journal, track your
         recordings, and capture your most valuable moments.
       </Text>
 
       <SignedIn>
         <RecordingButton />
       </SignedIn>
-      
     </View>
   );
 }
@@ -180,13 +153,13 @@ const styles = StyleSheet.create({
   brandText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: 'white',
+    color: "white",
   },
   welcomeText: {
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
-    color: 'white',
+    color: "white",
     marginBottom: 5,
   },
   subText: {
@@ -234,9 +207,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 90,
     fontSize: 16,
-    color: "#white",
+    color: "white",
   },
   continueButton: {
     backgroundColor: "#95D4AA",
@@ -267,8 +239,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "#f0f0f0",
   },
-  signUp:{
-    color:"#95D4AA"
+  signUp: {
+    color: "#95D4AA",
   },
   footerText: {
     fontSize: 12,

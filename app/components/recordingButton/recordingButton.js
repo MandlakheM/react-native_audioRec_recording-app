@@ -74,7 +74,7 @@ export default function RecordingButton() {
     setSelectedRec(null);
     try {
       if (!permissionResponse || permissionResponse.status !== "granted") {
-        console.log("Requesting permission..");
+        // console.log("Requesting permission..");
         await requestPermission();
       }
       await Audio.setAudioModeAsync({
@@ -87,14 +87,14 @@ export default function RecordingButton() {
         Audio.RecordingOptionsPresets.HIGH_QUALITY
       );
       setRecording(recording);
-      console.log("Recording started");
+      // console.log("Recording started");
     } catch (err) {
       console.error("Failed to start recording", err);
     }
   }
 
   async function stopRecording() {
-    console.log("Stopping recording..");
+    // console.log("Stopping recording..");
     await recording.stopAndUnloadAsync();
     const uri = recording.getURI();
     setRecording(undefined);
